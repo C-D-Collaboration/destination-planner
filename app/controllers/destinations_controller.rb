@@ -9,6 +9,8 @@ class DestinationsController < ApplicationController
     destination = Destination.find(params[:id])
     zip = destination.zip
     @weather = WeatherFacade.fetch_weather(zip)
+    description = @weather.description
+    @image = ImageFacade.fetch_image(description)
   end
 
   def new

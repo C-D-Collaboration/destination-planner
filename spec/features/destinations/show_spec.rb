@@ -28,5 +28,14 @@ RSpec.describe 'Destination show page', type: :feature do
         expect(page).to have_css('#description')
       end
     end
+
+    it 'should have a related image' do
+      visit root_path
+      click_link 'Show'
+
+      expect(current_path).to eq(destination_path(@destination.id))
+
+      expect(page).to have_css('#weather-image')
+    end
   end
 end
